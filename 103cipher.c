@@ -7,7 +7,7 @@
 
 #include "103cipher.h"
 
-int cipher(char **arg, int argc)
+int cipher(char **arg)
 {
     matrix_t *key;
     matrix_t *msg;
@@ -16,7 +16,7 @@ int cipher(char **arg, int argc)
         fprintf(stderr, "ERROR: Arg one or two empty\n");
         return EXIT_ERROR;
     }
-    prepare(&key, &msg, arg[0], arg[1]);
+    prepare(&key, &msg, arg[1], arg[0]);
     if (strcmp(arg[2], "0") && strcmp(arg[2], "1")) {
         fprintf(stderr, "ERROR: invalid value of arg three\n");
         return EXIT_ERROR;
@@ -26,5 +26,7 @@ int cipher(char **arg, int argc)
     } else if (!strcmp(arg[2], "1")) {
 
     }
+    destroy_matrix(key);
+    destroy_matrix(msg);
     return EXIT_SUCCESS;
 }

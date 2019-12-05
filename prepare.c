@@ -12,7 +12,7 @@ void get_msg_matrix_size(int *width, int *height, char *key, char *msg)
     int size = ceil(sqrt(strlen(key)));
 
     *width = size;
-    *height = ceil(strlen(msg) / size);
+    *height = ceil((double)strlen(msg) / size);
 }
 
 void prepare(matrix_t **mkey, matrix_t **mmsg, char *key, char *msg)

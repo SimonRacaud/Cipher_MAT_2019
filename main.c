@@ -19,7 +19,7 @@ int usage(int status)
 int main(int argc, char **argv)
 {
     if (argc == 4) {
-        cipher(argv + 1, argc - 1);
+        cipher(argv + 1);
     } else {
         return usage(84);
     }
