@@ -5,12 +5,15 @@
 ## Project makefile template
 ##
 
-SRC	=	main.c		\
-		matrix.c	\
-		chiffre.c	\
-		prepare.c	\
-		display.c	\
-		103cipher.c
+DSRC =	./src/
+
+SRC	=	$(DSRC)main.c		\
+		$(DSRC)matrix.c		\
+		$(DSRC)encode.c		\
+		$(DSRC)decode.c		\
+		$(DSRC)prepare.c	\
+		$(DSRC)display.c	\
+		$(DSRC)103cipher.c
 
 OBJ	=	$(SRC:.c=.o)
 

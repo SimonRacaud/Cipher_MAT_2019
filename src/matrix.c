@@ -75,19 +75,3 @@ matrix_t *matrix_product(matrix_t *ma, matrix_t *mb)
     }
     return result;
 }
-
-matrix_t *matrix_nbr_product(matrix_t *ma, matrix_t *mb)
-{
-    matrix_t *result = create_matrix(ma->width, ma->height);
-
-    if (ma->width != mb->height)
-        return NULL;
-    result->width = ma->width;
-    result->height = ma->height;
-    for (int y = 0; y < ma->height; y++) {
-        for (int x = 0; x < ma->width; x++) {
-            result->m[y][x] = ma->m[y][x] * mb->m[0][0];
-        }
-    }
-    return result;
-}
