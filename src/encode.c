@@ -13,6 +13,6 @@ void encode(matrix_t *key, matrix_t *msg)
 
     display_mkey(key);
     result = matrix_product(msg, key);
-    display_coded_msg(result);
+    display_mmsg(result, "Encrypted message:\n");
     destroy_matrix(result);
 }

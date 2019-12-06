@@ -16,15 +16,16 @@ int cipher(char **arg)
         fprintf(stderr, "ERROR: Arg one or two empty\n");
         return EXIT_ERROR;
     }
-    prepare(&key, &msg, arg[1], arg[0]);
     if (strcmp(arg[2], "0") && strcmp(arg[2], "1")) {
         fprintf(stderr, "ERROR: invalid value of arg three\n");
         return EXIT_ERROR;
     }
     if (!strcmp(arg[2], "0")) {
+        prepare_encode(&key, &msg, arg[1], arg[0]);
         encode(key, msg);
     } else if (!strcmp(arg[2], "1")) {
-
+        prepare_decode(&key, &msg, arg[1], arg[0]);
+        decode(key, msg);
     }
     destroy_matrix(key);
     destroy_matrix(msg);

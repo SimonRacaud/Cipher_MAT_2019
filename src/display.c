@@ -26,13 +26,13 @@ void display_mkey(matrix_t *mkey)
     printf("\n");
 }
 
-void display_coded_msg(matrix_t *coded_msg)
+void display_mmsg(matrix_t *msg, char *title)
 {
-    printf("Encrypted message:\n");
-    for (int y = 0; y < coded_msg->height; y++) {
-        for (int x = 0; x < coded_msg->width; x++) {
-            printf("%.0f", coded_msg->m[y][x]);
-            if (x != (coded_msg->width - 1) || y != (coded_msg->height - 1))
+    printf("%s", title);
+    for (int y = 0; y < msg->height; y++) {
+        for (int x = 0; x < msg->width; x++) {
+            printf("%.0f", msg->m[y][x]);
+            if (x != (msg->width - 1) || y != (msg->height - 1))
                 printf(" ");
         }
     }

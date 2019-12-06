@@ -7,12 +7,14 @@
 
 DSRC =	./src/
 
-SRC	=	$(DSRC)main.c		\
-		$(DSRC)matrix.c		\
-		$(DSRC)encode.c		\
-		$(DSRC)decode.c		\
-		$(DSRC)prepare.c	\
-		$(DSRC)display.c	\
+SRC	=	$(DSRC)main.c				\
+		$(DSRC)matrix_operation.c	\
+		$(DSRC)matrix.c				\
+		$(DSRC)encode.c				\
+		$(DSRC)decode.c				\
+		$(DSRC)prepare.c			\
+		$(DSRC)display.c			\
+		$(DSRC)tools.c				\
 		$(DSRC)103cipher.c
 
 OBJ	=	$(SRC:.c=.o)

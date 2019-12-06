@@ -25,18 +25,24 @@ typedef struct matrix {
 
 int cipher(char **arg);
 
-void prepare(matrix_t **mkey, matrix_t **mmsg, char *key, char *msg);
+void prepare_encode(matrix_t **mkey, matrix_t **mmsg, char *key, char *msg);
+void prepare_decode(matrix_t **mkey, matrix_t **mmsg, char *key, char *msg);
 
 matrix_t *create_matrix(int width, int height);
-void fill_matrix_from_str(matrix_t *matrix, char *str);
 void destroy_matrix(matrix_t *matrix);
+void fill_matrix_from_str(matrix_t *matrix, char *str);
+void fill_matrix_from_strnbr(matrix_t *matrix, char *str);
 matrix_t *matrix_product(matrix_t *ma, matrix_t *mb);
-matrix_t *matrix_nbr_product(matrix_t *ma, matrix_t *mb);
+matrix_t *divide_matrix(matrix_t *ma, double nb);
 
 void encode(matrix_t *key, matrix_t *msg);
 
 void print_matrix(matrix_t *matrix);
 void display_mkey(matrix_t *mkey);
-void display_coded_msg(matrix_t *coded_msg);
+void display_mmsg(matrix_t *msg, char *title);
+
+void decode(matrix_t *key, matrix_t *msg);
+
+int count_nbr_from_str(char *str);
 
 #endif

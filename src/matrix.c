@@ -26,6 +26,14 @@ matrix_t *create_matrix(int width, int height)
     return matrix;
 }
 
+void destroy_matrix(matrix_t *matrix)
+{
+    for (int i = 0; i < matrix->height; i++)
+        free(matrix->m[i]);
+    free(matrix->m);
+    free(matrix);
+}
+
 void fill_matrix_from_str(matrix_t *matrix, char *str)
 {
     int len = strlen(str);
@@ -42,36 +50,19 @@ void fill_matrix_from_str(matrix_t *matrix, char *str)
     }
 }
 
-void destroy_matrix(matrix_t *matrix)
+void fill_matrix_from_strnbr(matrix_t *matrix, char *str)
 {
-    for (int i = 0; i < matrix->height; i++)
-        free(matrix->m[i]);
-    free(matrix->m);
-    free(matrix);
-}
+    int len = strlen(str);
+    int i = 0;
 
-static double do_product(matrix_t *ma, matrix_t *mb, int line, int column)
-{
-    double result = 0;
-
-    for (int i = 0; i < ma->width; i++) {
-        result += ma->m[line][i] * mb->m[i][column];
-    }
-    return result;
-}
-
-matrix_t *matrix_product(matrix_t *ma, matrix_t *mb)
-{
-    matrix_t *result = create_matrix(ma->width, ma->height);
-
-    if (ma->width != mb->height)
-        return NULL;
-    result->width = ma->width;
-    result->height = ma->height;
-    for (int y = 0; y < ma->height; y++) {
-        for (int x = 0; x < ma->width; x++) {
-            result->m[y][x] = do_product(ma, mb, y, x);
+    for (int y = 0; y < matrix->height; y++) {
+        for (int x = 0; x < matrix->width; x++) {
+            if (i < len) {
+                matrix->m[y][x] = (double)atof(&str[i]);
+                while (str[i] != ' ' && i < len) i++;
+                i++;
+            } else
+                matrix->m[y][x] = 0;
         }
     }
-    return result;
 }
