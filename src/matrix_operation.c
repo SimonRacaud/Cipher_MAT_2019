@@ -42,7 +42,6 @@ matrix_t *divide_matrix(matrix_t *ma, double nb)
     for (int y = 0; y < ma->height; y++) {
         for (int x = 0; x < ma->width; x++) {
             result->m[y][x] = ma->m[y][x] / nb;
-            printf("%f \n", result->m[y][x]);
         }
     }
     return result;

@@ -11,9 +11,12 @@ void decode(matrix_t *key, matrix_t *msg)
 {
     matrix_t *result;
 
-    if (key->width == 1 && key->height == 1)
+    if (key->width == 1 && key->height == 1) {
         result = divide_matrix(msg, key->m[0][0]);
+    } else {
+
+    }
     display_mkey(key);
-    display_mmsg(result, "Decrypted message:\n");
+    display_mmsg(result, 1);
     destroy_matrix(result);
 }

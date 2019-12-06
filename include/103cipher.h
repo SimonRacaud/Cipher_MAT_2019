@@ -39,7 +39,7 @@ void encode(matrix_t *key, matrix_t *msg);
 
 void print_matrix(matrix_t *matrix);
 void display_mkey(matrix_t *mkey);
-void display_mmsg(matrix_t *msg, char *title);
+void display_mmsg(matrix_t *msg, int mode);
 
 void decode(matrix_t *key, matrix_t *msg);
 
