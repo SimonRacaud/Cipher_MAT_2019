@@ -42,6 +42,7 @@ void display_mkey(matrix_t *mkey);
 void display_mmsg(matrix_t *msg, int mode);
 
 void decode(matrix_t *key, matrix_t *msg);
+matrix_t *inverse_key(matrix_t *mkey);
 
 int count_nbr_from_str(char *str);
 
