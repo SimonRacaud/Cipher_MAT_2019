@@ -8,18 +8,19 @@
 #include "103cipher.h"
 
 int get_determinant(matrix_t *matrix)
-{
+{/*
     int det;
 
     if (matrix->height - line == 3) {
         det = matrix->m[0][0] + pow((-1), (i + j));
     }
-    det = matrix->m[0][0] * matrix->m[1][1] - matrix->m[0][1] * matrix->m[1][0];
+det = matrix->m[0][0] * matrix->m[1][1] - matrix->m[0][1] * matrix->m[1][0];*/
+    return 0;
 }
 
 int adjugate_matrix()
 {
-
+    return 0;
 }
 
 void transpose_matrix()
@@ -37,4 +38,5 @@ matrix_t *inverse_key(matrix_t *mkey)
         fprintf(stderr, "ERROR: invalid size of mkey\n");
         exit(EXIT_ERROR);
     }
+    return NULL;
 }

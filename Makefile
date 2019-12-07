@@ -15,6 +15,7 @@ SRC	=	$(DSRC)main.c				\
 		$(DSRC)prepare.c			\
 		$(DSRC)display.c			\
 		$(DSRC)tools.c				\
+		$(DSRC)inverse_matrix.c		\
 		$(DSRC)103cipher.c
 
 OBJ	=	$(SRC:.c=.o)
