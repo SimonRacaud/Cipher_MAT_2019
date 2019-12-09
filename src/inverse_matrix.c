@@ -44,7 +44,10 @@ matrix_t *adjugate_matrix(const matrix_t *matrix)
 
     for (int y = 0; y < matrix->height; y++) {
         for (int x = 0; x < matrix->width; x++) {
-            com->m[y][x] = pow((-1), (x + y)) * get_determ_2_2(x, y, matrix);
+            if (matrix->width == 2)
+                com->m[y][x] = pow((-1), (x + y)) * matrix->m[y][x];
+            else
+                com->m[y][x] = pow((-1), (x + y)) * get_determ_2_2(x, y, matrix);
         }
     }
     return com;
@@ -52,25 +55,30 @@ matrix_t *adjugate_matrix(const matrix_t *matrix)
 
 void transpose_matrix(matrix_t *matrix)
 {
-    for (int y = 1; y < matrix->height; y++) {
-        for (int x = 1; x < matrix->width; x++) {
-            
+    if (matrix->height != matrix->width)
+        return;
+    for (int pos = 1; pos < matrix->height; pos++) {
+        for (int i = 1; (pos - i) >= 0; i++) {
+            swap(&matrix->m[pos - i][pos], &matrix->m[pos][pos - i]);
         }
     }
 }
 
 matrix_t *inverse_key(matrix_t *mkey)
 {
-    //print_matrix(mkey);
-    int det = get_determinant(mkey);
+    double det = get_determinant(mkey);
     matrix_t *com;
+    matrix_t *inv_key;
 
-    if (mkey->width == 2 && mkey->height == 2) {
-
-    } else if (mkey->width == 3 && mkey->height == 3) {
+    if (mkey->width <= 3 && mkey->height <= 3 && mkey->width == mkey->height) {
         com = adjugate_matrix(mkey);
-        transpose_matrix(com);
+        if (mkey->width == 2)
+            swap(&com->m[0][0], &com->m[1][1]);
+        else
+            transpose_matrix(com);
+        inv_key = mul_matrix(com, (1 / det));
         destroy_matrix(com);
+        return inv_key;
     } else {
         fprintf(stderr, "ERROR: invalid size of mkey\n");
         exit(EXIT_ERROR);

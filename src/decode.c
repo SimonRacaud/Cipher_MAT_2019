@@ -18,11 +18,11 @@ void decode(matrix_t *key, matrix_t *msg)
             exit(EXIT_ERROR);
         }
         result = divide_matrix(msg, key->m[0][0]);
-        display_mkey(key);
+        display_mkey(key, 1);
     } else {
         inv_key = inverse_key(key);
         result = matrix_product(msg, inv_key);
-        display_mkey(inv_key);
+        display_mkey(inv_key, 1);
         destroy_matrix(inv_key);
     }
     display_mmsg(result, 1);

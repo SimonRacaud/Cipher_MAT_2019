@@ -34,11 +34,12 @@ void fill_matrix_from_str(matrix_t *matrix, char *str);
 void fill_matrix_from_strnbr(matrix_t *matrix, char *str);
 matrix_t *matrix_product(matrix_t *ma, matrix_t *mb);
 matrix_t *divide_matrix(matrix_t *ma, double nb);
+matrix_t *mul_matrix(matrix_t *ma, double nb);
 
 void encode(matrix_t *key, matrix_t *msg);
 
-void print_matrix(matrix_t *matrix);
-void display_mkey(matrix_t *mkey);
+void print_matrix(matrix_t *matrix, int is_decode);
+void display_mkey(matrix_t *mkey, int is_decode);
 void display_mmsg(matrix_t *msg, int mode);
 
 void decode(matrix_t *key, matrix_t *msg);

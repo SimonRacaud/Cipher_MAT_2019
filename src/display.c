@@ -7,11 +7,17 @@
 
 #include "103cipher.h"
 
-void print_matrix(matrix_t *matrix)
+void print_matrix(matrix_t *matrix, int is_decode)
 {
+    double val;
+
     for (int y = 0; y < matrix->height; y++) {
         for (int x = 0; x < matrix->width; x++) {
-            printf("%.0f", matrix->m[y][x]);
+            val = round(matrix->m[y][x] * 1000) / 1000;
+            if (val == 0 && is_decode)
+                printf("0.0");
+            else
+                printf("%.6g", val);
             if (x != matrix->width - 1)
                 printf("\t");
         }
@@ -19,10 +25,10 @@ void print_matrix(matrix_t *matrix)
     }
 }
 
-void display_mkey(matrix_t *mkey)
+void display_mkey(matrix_t *mkey, int is_decode)
 {
     printf("Key matrix:\n");
-    print_matrix(mkey);
+    print_matrix(mkey, is_decode);
     printf("\n");
 }
 

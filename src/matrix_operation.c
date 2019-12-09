@@ -27,7 +27,7 @@ matrix_t *matrix_product(matrix_t *ma, matrix_t *mb)
     result->height = ma->height;
     for (int y = 0; y < ma->height; y++) {
         for (int x = 0; x < ma->width; x++) {
-            result->m[y][x] = do_product(ma, mb, y, x);
+            result->m[y][x] = round(do_product(ma, mb, y, x));
         }
     }
     return result;
@@ -42,6 +42,20 @@ matrix_t *divide_matrix(matrix_t *ma, double nb)
     for (int y = 0; y < ma->height; y++) {
         for (int x = 0; x < ma->width; x++) {
             result->m[y][x] = ma->m[y][x] / nb;
+        }
+    }
+    return result;
+}
+
+matrix_t *mul_matrix(matrix_t *ma, double nb)
+{
+    matrix_t *result = create_matrix(ma->width, ma->height);
+
+    result->width = ma->width;
+    result->height = ma->height;
+    for (int y = 0; y < ma->height; y++) {
+        for (int x = 0; x < ma->width; x++) {
+            result->m[y][x] = (ma->m[y][x] * nb);
         }
     }
     return result;
