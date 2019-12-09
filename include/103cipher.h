@@ -45,5 +45,6 @@ void decode(matrix_t *key, matrix_t *msg);
 matrix_t *inverse_key(matrix_t *mkey);
 
 int count_nbr_from_str(char *str);
+void swap(double *a, double *b);
 
 #endif
