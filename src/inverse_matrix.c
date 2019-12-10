@@ -12,7 +12,6 @@ const matrix_t *matrix)
 {
     double abcd[4];
     int i_abcd = 0;
-
     for (int y = 0; y < matrix->height; y++) {
         for (int x = 0; x < matrix->width; x++) {
             if (y != y_exclude && x != x_exclude) {
@@ -70,6 +69,10 @@ matrix_t *inverse_key(matrix_t *mkey)
     matrix_t *com;
     matrix_t *inv_key;
 
+    if (det == 0) {
+        fprintf(stderr, "ERROR: determinant is null\n");
+        exit(EXIT_ERROR);
+    }
     if (mkey->width <= 3 && mkey->height <= 3 && mkey->width == mkey->height) {
         com = adjugate_matrix(mkey);
         if (mkey->width == 2)
