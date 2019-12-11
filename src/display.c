@@ -44,7 +44,7 @@ void display_mmsg(matrix_t *msg, int mode)
                 printf("%.0f", msg->m[y][x]);
                 if (x != (msg->width - 1) || y != (msg->height - 1))
                     printf(" ");
-            } else
+            } else if (msg->m[y][x] != 0)
                 printf("%c", (char)msg->m[y][x]);
         }
     }

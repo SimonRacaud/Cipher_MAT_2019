@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** 103cipher_2019
 ** File description:
-** encode
+** encode the message with the key given as parameter
 */
 
 #include "103cipher.h"

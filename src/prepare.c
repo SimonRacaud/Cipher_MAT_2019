@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** 103cipher_2019
 ** File description:
-** prepare the matrix
+** Create the two matrix (for key and message) and fills them
 */
 
 #include "103cipher.h"
