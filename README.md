@@ -1,2 +1,2 @@
 # Cipher_MAT_2019
-Mathematics : Cryptography with matrix computation.
+Mathematic: Cryptography with matrix computation.
